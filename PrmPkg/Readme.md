@@ -24,7 +24,6 @@ The changes in the ACPI Specification include two elements:
 2. A new Operation Region Address Space Identifier Value is defined as `0xB` for `PlatformRtMechanism`
 
 ## How to Build PrmPkg
-
 As noted earlier, resources in `PrmPkg` are intended to be referenced by a platform firmware so it can adopt support
 for PRM. In that case, the platform firmware should add the `PrmConfigDxe` and `PrmLoaderDxe` drivers to its DSC and
 FDF files so they are built in the platform firmware build and dispatched during its runtime. All that is left is to
@@ -34,7 +33,6 @@ firmware flash map.
 ### PrmPkg Standalone Build
 
 To build `PrmPkg` as a standalone package:
-
 1. If new to EDK II, follow the directions in [Getting Started with EDK II](https://github.com/tianocore/tianocore.github.io/wiki/Getting-Started-with-EDK-II)
 
 2. Clone the *master* branch on the edk2 repository locally \
@@ -52,11 +50,9 @@ To build `PrmPkg` as a standalone package:
      * ``. edksetup.sh``
 
 5. Build PrmPkg \
-
 The PrmPkg can be built targetting the IA32/X64 and AArch64 architectures.
 
  - IA32/X64
-
    ``build -p PrmPkg/PrmPkg.dsc -a IA32 -a X64``
    > ***Note***: Due to the way PRM modules are compiled with exports, **only building on Visual Studio compiler tool
    chains has been tested**.
@@ -91,7 +87,6 @@ supported in the future if needed.
 
 In the `PrmPkg` implementation, the Platform GUID is automatically derived from the PLATFORM_GUID in the DSC file of
 the package being built.
-
 ### Build Output
 
 Like a typical EDK II package, the PrmPkg binary build output can be found in the Build directory in the edk2
@@ -101,7 +96,6 @@ For example, that path to PRM module sample binaries for a DEBUG VS2017 X64 buil
 ``edk2/Build/Prm/DEBUG_VS2017/X64/PrmPkg/Samples``
 
 ## Overview
-
 At a high-level, PRM can be viewed from three levels of granularity:
 
 1. `PRM interface` - Encompassing the entirety of firmware functionalities and data provided to OS runtime. Most
@@ -112,7 +106,6 @@ At a high-level, PRM can be viewed from three levels of granularity:
 3. `PRM handler` - The implementation/callback of a single PRM functionality as identified by a GUID.
 
 ## Firmware Design
-
 The firmware has three key generic drivers to support PRM:
 
 1. A `PRM Loader driver` - Functionality is split across three phases:
@@ -132,7 +125,6 @@ The firmware has three key generic drivers to support PRM:
    A PRM module groups together cohesive sets of PRM functionality into functions referred to as "PRM handlers".
 
 ## PrmPkg Code Organization
-
 The package follows a standard EDK II style package format. The list below contains some notable areas to
 explore in the package:
 
@@ -148,14 +140,12 @@ that infrastructure. The PrmPkg is meant to be used as-is by firmware that suppo
 prevent the package from being used as-is should be addressed directly in PrmPkg.
 
 ## PRM Information UEFI Application
-
 A UEFI application is provided in this package called `PrmInfo` that allows a user to display and test PRM
 modules on their system.
 
 [Link to application source code](PrmPkg/Application/PrmInfo).
 
 This application is intended to be helpful during PRM enabling by allowing the user to:
-
   1. Confirm that their firmware port of the PRM infrastructure implemented in this package is functioning correctly.
   2. Quickly get information about what PRM modules and handlers that are present on a given system.
   3. Quickly test PRM handlers without booting into a full operating system.
@@ -179,7 +169,6 @@ By default, the EDK II implementation of UEFI does not allow images with the sub
 ```txt
 ERROR - Linker #1294 from LINK : fatal exports and import libraries are not supported with /SUBSYSTEM:EFI_RUNTIME_DRIVER
 ```
-
 This can adjusted in the MSVC linker options.
 
 The subsystem type is changed in the firmware build to allow the export table to be added but the subsystem type in the
@@ -200,7 +189,6 @@ motivation behind using PE/COFF export tables to expose PRM module information a
 definition consistent between firmware and OS load.
 
 ### PRM Module Exports
-
 A PRM module must contain at least two exports: A PRM Module Export Descriptor and at least one PRM handler. Here's
 an example of an export table from a PRM module that has a single PRM handler:
 
@@ -229,9 +217,7 @@ an example of an export table from a PRM module that has a single PRM handler:
           2    1 00004020 PrmModuleExportDescriptor
 
 ```
-
 ### PRM Image Format
-
 PRM modules are ultimately PE/COFF images. However, when packaged in firmware the PE/COFF image is placed into a
 Firmware File System (FFS) file. This is transparent to the operating system but done to better align with the typical
 packaging of PE32(+) images managed in the firmware binary image. In the dump of the PRM FV binary image shown earlier,
@@ -241,7 +227,6 @@ during the firmware build process. In either case, the PE/COFF section is contai
 image.
 
 ### PRM Module Implementation
-
 To simplify building the PRM Module Export Descriptor, a PRM module implementation can use the following macros to mark
 functions as PRM handlers. In this example, a PRM module registers three functions by name as PRM handlers with the
 associated GUIDs.
@@ -267,7 +252,6 @@ all the includes needed to author a PRM module. This export is `PRM_MODULE_UPDAT
 `PrmModule.h`, a PRM module has the `PRM_MODULE_UPDATE_LOCK_DESCRIPTOR` automatically exported.
 
 ## PRM Handler Constraints
-
 At this time, PRM handlers are restricted to a maximum identifier length of 128 characters. This is checked when using
 the `PRM_HANDLER_EXPORT` macro by using a static assert that reports a violation at build-time.
 
