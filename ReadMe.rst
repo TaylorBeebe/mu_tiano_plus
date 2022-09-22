@@ -11,17 +11,17 @@ Ubuntu_GCC5_                  |UbuntuCiBuild|   |UbuntuCiTest|  |UbuntuCiCoverag
 
 This repository is part of Project Mu.  Please see Project Mu for details https://microsoft.github.io/mu
 
-Branch Status - release/202202
+Branch Status - release/202208
 ==============================
 
 :Status:
   In Development
 
 :Entered Development:
-  2022/03/07
+  2022/09/22
 
 :Anticipated Stabilization:
-  May 2022
+  Nov 2022
 
 Branch Changes - release/202202
 ===============================
@@ -41,23 +41,21 @@ Bug Fixes-dev
 
 - None
 
-2202_RefBoot Changes
+2208_RefBoot Changes
 --------------------
 
 - Incomplete
 
-2202_CIBuild Changes
+2208_CIBuild Changes
 --------------------
 
 - None
 
-2202_Rebase Changes
+2208_Rebase Changes
 -------------------
 
-| Starting commit: 825833dbb857805f9631168eb45475fbce9af175
-| Destination Commit from upstream edk2: b24306f15daa2ff8510b06702114724b33895d3c
-
-- Evaluate gEfiSecurityPkgTokenSpaceGuid.PcdRandomizePlatformHierarchy
+| Starting commit: 9fcab92e5a20b8e668ce47008eda4f09f3a13d37
+| Destination Commit from upstream edk2: ba0e0e4c6a174b71b18ccd6e47319cc45878893c
 
 Code of Conduct
 ===============
@@ -141,12 +139,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 .. CoreCI
 
-.. _Windows_VS2019: https://dev.azure.com/projectmu/mu/_build/latest?definitionId=55&&branchName=release%2F202202
-.. |WindowsCiBuild| image:: https://dev.azure.com/projectmu/mu/_apis/build/status/CI/Mu%20Tiano%20Plus%20CI%20VS2019?branchName=release%2F202202
+.. _Windows_VS2019: https://dev.azure.com/projectmu/mu/_build/latest?definitionId=55&&branchName=release%2F202208
+.. |WindowsCiBuild| image:: https://dev.azure.com/projectmu/mu/_apis/build/status/CI/Mu%20Tiano%20Plus%20CI%20VS2019?branchName=release%2F202208
 .. |WindowsCiTest| image:: https://img.shields.io/azure-devops/tests/projectmu/mu/55.svg
 .. |WindowsCiCoverage| image:: https://img.shields.io/badge/coverage-coming_soon-blue
 
-.. _Ubuntu_GCC5: https://dev.azure.com/projectmu/mu/_build/latest?definitionId=56&branchName=release%2F202202
-.. |UbuntuCiBuild| image:: https://dev.azure.com/projectmu/mu/_apis/build/status/CI/Mu%20Tiano%20Plus%20CI%20Ubuntu%20GCC5?branchName=release%2F202202
+.. _Ubuntu_GCC5: https://dev.azure.com/projectmu/mu/_build/latest?definitionId=56&branchName=release%2F202208
+.. |UbuntuCiBuild| image:: https://dev.azure.com/projectmu/mu/_apis/build/status/CI/Mu%20Tiano%20Plus%20CI%20Ubuntu%20GCC5?branchName=release%2F202208
 .. |UbuntuCiTest| image:: https://img.shields.io/azure-devops/tests/projectmu/mu/56.svg
 .. |UbuntuCiCoverage| image:: https://img.shields.io/badge/coverage-coming_soon-blue
