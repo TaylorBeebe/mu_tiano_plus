@@ -482,7 +482,7 @@ Tcg2UserConfirm (
       // MU_CHANGE [BEGIN] - CodeQL change
       if (TmpStr1 == NULL) {
         ASSERT (TmpStr1 != NULL);
-        return EFI_OUT_OF_RESOURCES;
+        return FALSE;
       }
 
       // MU_CHANGE [END] - CodeQL change
