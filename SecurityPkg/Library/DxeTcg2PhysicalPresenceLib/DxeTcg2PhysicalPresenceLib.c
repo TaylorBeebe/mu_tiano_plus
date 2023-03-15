@@ -399,7 +399,13 @@ Tcg2UserConfirm (
   NoPpiInfo   = FALSE;
   BufSize     = CONFIRM_BUFFER_SIZE;
   ConfirmText = AllocateZeroPool (BufSize);
-  ASSERT (ConfirmText != NULL);
+  // MU_CHANGE [BEGIN] - CodeQL change
+  if (ConfirmText == NULL) {
+    ASSERT (ConfirmText != NULL);
+    return FALSE;
+  }
+
+  // MU_CHANGE [END] - CodeQL change
 
   mTcg2PpStringPackHandle = HiiAddPackages (&gEfiTcg2PhysicalPresenceGuid, gImageHandle, DxeTcg2PhysicalPresenceLibStrings, NULL);
   ASSERT (mTcg2PpStringPackHandle != NULL);
@@ -579,6 +585,13 @@ Tcg2UserConfirm (
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_ACCEPT_KEY));
     }
 
+    // MU_CHANGE [BEGIN] - CodeQL change
+    if (TmpStr1 == NULL) {
+      FreePool (ConfirmText);
+      return FALSE;
+    }
+
+    // MU_CHANGE [END] - CodeQL change
     StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
     FreePool (TmpStr1);
 
