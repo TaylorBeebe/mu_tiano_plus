@@ -479,7 +479,13 @@ Tcg2UserConfirm (
       Tcg2FillBufferWithBootHashAlg (TempBuffer2, sizeof (TempBuffer2), CurrentPCRBanks);
 
       TmpStr1 = AllocateZeroPool (BufSize);
-      ASSERT (TmpStr1 != NULL);
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        ASSERT (TmpStr1 != NULL);
+        return EFI_OUT_OF_RESOURCES;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (TmpStr1, BufSize, L"Current PCRBanks is 0x%x. (%s)\nNew PCRBanks is 0x%x. (%s)\n", CurrentPCRBanks, TempBuffer2, TpmPpCommandParameter, TempBuffer);
 
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
