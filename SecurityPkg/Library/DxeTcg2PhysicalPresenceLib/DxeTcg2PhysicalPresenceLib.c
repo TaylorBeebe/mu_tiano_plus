@@ -419,10 +419,24 @@ Tcg2UserConfirm (
       TmpStr2    = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_CLEAR));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_CLEAR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), L" \n\n", (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
@@ -435,14 +449,35 @@ Tcg2UserConfirm (
       TmpStr2    = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_CLEAR));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_PPI_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_NOTE_CLEAR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_CLEAR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), L" \n\n", (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
@@ -470,14 +505,35 @@ Tcg2UserConfirm (
       TmpStr2    = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_SET_PCR_BANKS));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_SET_PCR_BANKS_1));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_SET_PCR_BANKS_2));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
 
@@ -505,14 +561,35 @@ Tcg2UserConfirm (
       TmpStr2    = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_CHANGE_EPS));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_CHANGE_EPS_1));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_WARNING_CHANGE_EPS_2));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
 
@@ -522,6 +599,13 @@ Tcg2UserConfirm (
       TmpStr2 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_ENABLE_BLOCK_SID));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
       break;
@@ -530,6 +614,13 @@ Tcg2UserConfirm (
       TmpStr2 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_DISABLE_BLOCK_SID));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
       break;
@@ -539,6 +630,13 @@ Tcg2UserConfirm (
       TmpStr2   = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_PP_ENABLE_BLOCK_SID));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_PPI_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
       break;
@@ -548,6 +646,13 @@ Tcg2UserConfirm (
       TmpStr2   = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_PP_DISABLE_BLOCK_SID));
 
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_PPI_HEAD_STR));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if ((TmpStr1 == NULL) || (TmpStr2 == NULL)) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       UnicodeSPrint (ConfirmText, BufSize, TmpStr1, TmpStr2);
       FreePool (TmpStr1);
       break;
@@ -568,6 +673,13 @@ Tcg2UserConfirm (
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_ACCEPT_KEY));
     }
 
+    // MU_CHANGE [BEGIN] - CodeQL change
+    if (TmpStr1 == NULL) {
+      FreePool (ConfirmText);
+      return FALSE;
+    }
+
+    // MU_CHANGE [END] - CodeQL change
     StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
     FreePool (TmpStr1);
 
@@ -597,12 +709,27 @@ Tcg2UserConfirm (
 
     if (NoPpiInfo) {
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_NO_PPI_INFO));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
     }
 
     TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TCG_STORAGE_REJECT_KEY));
   }
+
+  // MU_CHANGE [BEGIN] - CodeQL change
+  if (TmpStr1 == NULL) {
+    FreePool (ConfirmText);
+    return FALSE;
+  }
+
+  // MU_CHANGE [END] - CodeQL change
 
   BufSize -= StrSize (ConfirmText);
   UnicodeSPrint (ConfirmText + StrLen (ConfirmText), BufSize, TmpStr1, TmpStr2);
