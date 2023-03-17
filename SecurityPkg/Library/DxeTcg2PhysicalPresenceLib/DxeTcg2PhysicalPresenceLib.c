@@ -685,6 +685,13 @@ Tcg2UserConfirm (
 
     if (NoPpiInfo) {
       TmpStr1 = Tcg2PhysicalPresenceGetStringById (STRING_TOKEN (TPM_NO_PPI_INFO));
+      // MU_CHANGE [BEGIN] - CodeQL change
+      if (TmpStr1 == NULL) {
+        FreePool (ConfirmText);
+        return FALSE;
+      }
+
+      // MU_CHANGE [END] - CodeQL change
       StrnCatS (ConfirmText, BufSize / sizeof (CHAR16), TmpStr1, (BufSize / sizeof (CHAR16)) - StrLen (ConfirmText) - 1);
       FreePool (TmpStr1);
     }
